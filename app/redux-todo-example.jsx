@@ -20,11 +20,32 @@ var reducer = (state = stateDefault, action) => {
   }
 };
 
-var store = redux.createStore(reducer);
+var store = redux.createStore(reducer, redux.compose(
+  window.devToolsExtension ? window.devToolsExtension() : f => f
+));
+
+// Subscribe to changes
+var unsubscribe = store.subscribe(() => {
+  var state = store.getState();
+
+  console.log('searchText is', state.searchText);
+  document.getElementById('app').innerHTML = state.searchText;
+});
+// unsubscribe();
+
 console.log('currentState', store.getState());
 
 store.dispatch({
   type: 'CHANGE_SEARCH_TEXT',
   searchText: 'dog'
 });
-console.log('searchText should be dog', store.getState());
+
+store.dispatch({
+  type: 'CHANGE_SEARCH_TEXT',
+  searchText: 'work'
+});
+
+store.dispatch({
+  type: 'CHANGE_SEARCH_TEXT',
+  searchText: 'gym'
+});

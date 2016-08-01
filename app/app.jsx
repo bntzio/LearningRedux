@@ -10,9 +10,5 @@ $(document).foundation();
 // Load Custom Styles
 require('style!css!sass!applicationStyles');
 
-ReactDOM.render(
-  <p>LearningRedux</p>,
-  document.getElementById('app')
-);
-
+// Load Redux file
 require('./redux-todo-example.jsx');
