@@ -10,5 +10,5 @@ $(document).foundation();
 // Load Custom Styles
 require('style!css!sass!applicationStyles');
 
-// Load Redux file
 require('./redux-example.jsx');
+//require('./redux-todo-example.jsx');
